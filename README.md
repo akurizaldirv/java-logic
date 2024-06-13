@@ -50,31 +50,32 @@ symbol : 0
 ```java
 public static void showCharCounter(String text) {
 //        Initialize store
-        Map<String, Integer> charCount = new HashMap<String, Integer>();
-        charCount.put("uppercase", 0);
-        charCount.put("lowercase", 0);
-        charCount.put("symbol", 0);
-        charCount.put("angka", 0);
+    Map<String, Integer> charCount = new HashMap<>(Map.ofEntries(
+            Map.entry("uppercase", 0),
+            Map.entry("lowercase", 0),
+            Map.entry("angka", 0),
+            Map.entry("symbol", 0)
+    ));
 
 //        Count every chars
-        for (char ch : text.toCharArray()) {
-            if (Character.isAlphabetic(ch)) {
-                if (Character.isUpperCase(ch)) {
-                    charCount.put("uppercase", charCount.get("uppercase") + 1);
-                } else {
-                    charCount.put("lowercase", charCount.get("lowercase") + 1);
-                }
-            } else if (Character.isDigit(ch)) {
-                charCount.put("angka", charCount.get("angka") + 1);
+    for (char ch : text.toCharArray()) {
+        if (Character.isAlphabetic(ch)) {
+            if (Character.isUpperCase(ch)) {
+                charCount.put("uppercase", charCount.get("uppercase") + 1);
             } else {
-                charCount.put("symbol", charCount.get("symbol") + 1);
+                charCount.put("lowercase", charCount.get("lowercase") + 1);
             }
+        } else if (Character.isDigit(ch)) {
+            charCount.put("angka", charCount.get("angka") + 1);
+        } else {
+            charCount.put("symbol", charCount.get("symbol") + 1);
         }
+    }
 
 //        Print result
-        System.out.println("uppercase : " + charCount.get("uppercase"));
-        System.out.println("lowercase : " + charCount.get("lowercase"));
-        System.out.println("angka : " + charCount.get("angka"));
-        System.out.println("symbol : " + charCount.get("symbol"));
-    }
+    System.out.println("uppercase : " + charCount.get("uppercase"));
+    System.out.println("lowercase : " + charCount.get("lowercase"));
+    System.out.println("angka : " + charCount.get("angka"));
+    System.out.println("symbol : " + charCount.get("symbol"));
+}
 ```
