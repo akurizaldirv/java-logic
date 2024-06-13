@@ -15,11 +15,12 @@ public class Main {
 
     public static void showCharCounter(String text) {
 //        Initialize store
-        Map<String, Integer> charCount = new HashMap<String, Integer>();
-        charCount.put("uppercase", 0);
-        charCount.put("lowercase", 0);
-        charCount.put("symbol", 0);
-        charCount.put("angka", 0);
+        Map<String, Integer> charCount = new HashMap<>(Map.ofEntries(
+                Map.entry("uppercase", 0),
+                Map.entry("lowercase", 0),
+                Map.entry("angka", 0),
+                Map.entry("symbol", 0)
+        ));
 
 //        Count every chars
         for (char ch : text.toCharArray()) {
